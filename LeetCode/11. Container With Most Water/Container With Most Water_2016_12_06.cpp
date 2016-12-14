@@ -1,12 +1,17 @@
-bool isPalindrome(int x) {
-	if (x < 0 || (x != 0 && x % 10 == 0)) {
-		return false;
+int maxArea(vector<int> &height) {
+	int len = height.size();
+	int max_area = 0, area = 0;
+	int L = 0, R = len - 1;
+	while (L < R) {
+		if (height[L] < height[R]) {
+			area = height[L] * (R - L);
+			L++;
+		}
+		else {
+			area = height[R] * (R - L);
+			R--;
+		}
+		max_area = max_area > area ? max_area : area;
 	}
-	int sum = 0;
-	while (x > sum) {
-		sum = sum * 10 + x % 10;
-		x = x / 10;
-	}
-	
-	return (x == sum) || (x == sum/10);
+	return max_area;
 }

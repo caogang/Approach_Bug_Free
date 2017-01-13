@@ -25,4 +25,5 @@ int main() {
     cout << str[i];
   }
   cout << endl;
+  return 0;
 }
